@@ -1,38 +1,213 @@
-.App {
-  text-align: center;
+:root {
+	--margin: 10px 7px;
+	--padding: 5px 15px;
+	--border-radius: 50px;
+	--light-color: #ddd;
+	--dark-color: #17236a;
+  --background: #234E70;
+	--font-size: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+::-webkit-scrollbar {
+	width: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+	background: var(--background);
+	color: var(--light-color);
+	padding: var(--padding);
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav > a {
+	color: var(--light-color);
+	padding: var(--padding);
+	margin: var(--margin);
+	text-decoration: none;
+	font-size: var(--font-size);
+}
+
+.footer {
+	font-size: x-small;
+	background: var(--background);
+	color: var(--light-color);
+	width: 100vw;
+	text-align: center;
+	border-radius: var(--border-radius);
+}
+
+.app-container {
+	max-width: 640px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.text-center {
+	text-align: center;
+}
+.text-right {
+	text-align: right;
+}
+.text-left {
+	text-align: left;
+}
+
+.title-text {
+	font-size: var(--font-size);
+	background: var(--background);
+	color: var(--light-color);
+	padding: var(--padding);
+	border-radius: var(--border-radius);
+}
+
+input,
+button {
+	margin: var(--margin);
+	padding: var(--padding);
+	border-radius: var(--border-radius);
+	outline: none;
+	font-size: var(--font-size);
+}
+
+button {
+	border: none;
+	color: var(--light-color);
+	background: var(--background);
+	cursor: pointer;
+  transition: all 0.3s;
+}
+
+button:active {
+  transform: scale(1.035);
+	background: var(--dark-color);
+}
+
+.todo-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.todo-form {
+  margin: 20px 0px;
+	display: flex;
+	justify-content: center;
+}
+
+.todo-input {
+  width: 460px;
+}
+
+.todo-item {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	flex-direction: row;
+	justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.todo-text {
+  font-size: 1.3rem;
+	margin: var(--margin);
+	padding: var(--padding);
+	border-radius: var(--border-radius);
+	border: 1px solid var(--dark-color);
+	width: 90%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.complete {
+  border: 1px solid green;
+	color: green;
+	text-decoration: line-through;
 }
+
+.todo-delete {
+  width: 4%;
+	margin: auto;
+  transition: all 1s;
+}
+
+.todo-delete:active {
+  width: 5.5%;
+}
+
+.todo-list {
+	width: 620px;
+	height: 60vh;
+	overflow-y: scroll;
+	border: 3px solid var(--dark-color);
+	border-radius: var(--border-radius);
+  transition: all ease-in;
+	margin: auto 0;
+}
+
+.todo-status {
+	width: 620px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	border: 3px solid var(--dark-color);
+	margin: 10px 0px;
+	padding: var(--padding);
+	border-radius: var(--border-radius);
+}
+
+.follower {
+	height: 5.5rem;
+	width: 32rem;
+	border: 3px solid var(--dark-color);
+	margin: var(--margin);
+	padding: 5px;
+	border-radius: var(--border-radius);
+	display: flex;
+	background-color: var(--background);
+	color: var(--light-color);
+	transition: all .2s ease-in-out;
+}
+
+.follower:hover{
+	background: var(--light-color);
+	color: var(--dark-color);
+}
+
+.follower-detail {
+	margin-left: 2rem;
+	display: flex;
+	flex-direction: column;
+	color: inherit;
+}
+
+.follower-image {
+	height: 4.5rem;
+	border-radius: var(--border-radius);
+	border: 1px solid var(--dark-color);
+	background: var(--light-color);
+}
+
+@media (max-width: 768px) {
+	.App {
+		width: 90%;
+	}
+	.todo-list,
+	.todo-status {
+		width: 95%;
+	}
+	.todo-input {
+		width:56%;
+	}
+	.follower {
+		width: 24rem;
+	}
+}
+
+@media (max-width: 420px) {
+	.todo-input {
+		width: 57%;
+	}
+	.follower{
+		width: 20rem;
+	}
+}
+
+
