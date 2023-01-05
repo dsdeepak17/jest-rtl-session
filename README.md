@@ -53,4 +53,5 @@
 
 > The CRA has scripts that run the tests in __test__ folder or with name Component.test.js
 > To run the test you could run following command in terminal:
-      npm run test
+> 
+    npm run test
