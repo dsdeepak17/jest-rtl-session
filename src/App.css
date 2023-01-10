@@ -153,6 +153,19 @@ button:active {
 	border-radius: var(--border-radius);
 }
 
+.followers-page {
+	height: 86vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 3px solid var(--dark-color);
+	border-radius: var(--border-radius);
+	margin: var(--margin);
+	overflow-y: scroll;
+}
+
 .follower {
 	height: 5.5rem;
 	width: 32rem;
