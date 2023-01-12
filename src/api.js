@@ -3,11 +3,11 @@ const CONSTANTS = {
   USER_API: 'https://dummyjson.com/users',
   NUMBER_OF_USERS: 8,
 }
-export const fetchFollwers = async () => {
+export const fetchFollowers = async () => {
   try {
-    const data = await fetch(`${CONSTANTS.USER_API}?limit=${CONSTANTS.NUMBER_OF_USERS}`);
-    const users = await data.json();
-    return users
+    const response = await fetch(`${CONSTANTS.USER_API}?limit=${CONSTANTS.NUMBER_OF_USERS}`);
+    const data = await response.json();
+    return data.users
   } catch (error) {
     return error
   }

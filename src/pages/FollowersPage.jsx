@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Follower from '../components/Follower/Follower';
-import { fetchFollwers } from '../api';
+import { fetchFollowers } from '../api';
 
 function FollowersPage() {
   const [followers, setFollowers] = useState([])
 
   useEffect(() => {
-    fetchFollwers().then(users => setFollowers(users.users)).catch(e => console.log(e));
+    fetchFollowers().then(users => setFollowers(users)).catch(e => console.log(e));
   }, [])
 
   return (
