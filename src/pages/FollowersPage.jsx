@@ -14,7 +14,7 @@ function FollowersPage() {
 
   return (
     <div className='followers-page' data-testid='followers-page'>
-      {isLoading ? <span className='loader'>Loading...</span> :
+      {isLoading ? <span className='centered-item'>Loading...</span> :
         <div className='follower-list' data-testid='follower-list'>
           {
             followers?.map(follower => {
