@@ -5,13 +5,16 @@ import { fetchFollowers } from '../api';
 function FollowersPage() {
   const [followers, setFollowers] = useState([])
 
+  const isLoading = followers.length === 0;
+
   useEffect(() => {
-    fetchFollowers().then(users => setFollowers(users)).catch(e => console.log(e));
+    fetchFollowers().then(users => setFollowers(users))
   }, [])
+
 
   return (
     <div className='followers-page' data-testid='followers-page'>
-      {followers.length === 0 ? <span className='loader'>Loading...</span> :
+      {isLoading ? <span className='loader'>Loading...</span> :
         <div className='follower-list' data-testid='follower-list'>
           {
             followers?.map(follower => {

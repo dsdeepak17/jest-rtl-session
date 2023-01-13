@@ -8,7 +8,7 @@ export const fetchFollowers = async () => {
     const response = await fetch(`${CONSTANTS.USER_API}?limit=${CONSTANTS.NUMBER_OF_USERS}`);
     const data = await response.json();
     return data.users
-  } catch (error) {
-    return error
+  } catch (e) {
+    console.error(e)
   }
 }
