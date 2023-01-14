@@ -6,7 +6,7 @@ function Follower({ follower }) {
 
 
   return (
-    <div className='follower'>
+    <div className='follower' data-testid='follower-item'>
       <img src={image} alt="user-img" className='follower-image' />
       <div className="follower-detail">
         <span>{`${firstName} ${lastName}`}</span>

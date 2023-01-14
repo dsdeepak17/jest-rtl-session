@@ -1,17 +1,17 @@
 import { render, screen, cleanup } from '@testing-library/react'
 import FollowersPage from '../../pages/FollowersPage'
 import { users } from '../../data';
-import {rest} from 'msw'
-import {setupServer} from 'msw/node'
+import { rest } from 'msw'
+import { setupServer } from 'msw/node'
 
 describe('Test Followers Page', () => {
 
   const server = setupServer(
     rest.get('https://dummyjson.com/users', (req, res, ctx) => {
-      return res(ctx.json({users}))
+      return res(ctx.json({ users }))
     }),
   )
-  
+
   beforeAll(() => server.listen())
   afterEach(() => {
     server.resetHandlers()
@@ -33,5 +33,13 @@ describe('Test Followers Page', () => {
 
     expect(followerList).toBeInTheDocument()
     expect(followerList).toHaveTextContent(/deepak singh/i)
+  })
+
+  it('should render 6 items in the followerList', async () => {
+    const { debug } = render(<FollowersPage />)
+
+    const followerItems = await screen.findAllByTestId('follower-item')
+
+    expect(followerItems.length).toBe(6)
   })
 })  
