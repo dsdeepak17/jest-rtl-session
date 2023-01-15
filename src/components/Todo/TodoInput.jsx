@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addTodo as addNewTodo } from '../../redux/TodoSlice';
 
-function TodoInput({ handleAddTodo }) {
+function TodoInput() {
+  const dispatch = useDispatch();
   const [todo, addTodo] = useState('')
   const isDisabled = todo.length === 0;
 
@@ -15,7 +18,8 @@ function TodoInput({ handleAddTodo }) {
       text: todo,
       isComplete: false,
     }
-    handleAddTodo(newTodo)
+    
+    dispatch(addNewTodo(newTodo))
     addTodo('')
   }  
 
