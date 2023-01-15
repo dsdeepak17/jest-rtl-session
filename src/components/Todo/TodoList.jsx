@@ -1,7 +1,20 @@
 import React from 'react'
 import DeleteIcon from '../../assets/icons/delete.svg'
+import { useSelector, useDispatch } from 'react-redux'
+import { toggleTodoCompletion as toggleTodo, deleteTodo } from '../../redux/TodoSlice';
 
-function TodoList({ todoList, toggleTodoCompletion, handleTodoDeletion }) {
+function TodoList() {
+  const dispatch = useDispatch();
+  const todoList = useSelector(state => state.todos.todoList)
+
+  const toggleTodoCompletion = (toggleId) => {
+    dispatch(toggleTodo(toggleId))
+  }
+
+  const handleTodoDeletion = deletionId => {
+    dispatch(deleteTodo(deletionId))
+  }
+
   return (
     <div className='todo-list' data-testid="todo-list">
       <h2 className='text-center'>Todo List</h2>
