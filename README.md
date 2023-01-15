@@ -73,5 +73,5 @@ There are generally three levels of testing:
 
 > The CRA has scripts that run the tests in **test** folder or with name Component.test.js
 > To run the test you could run following command in terminal:
-
-    npm run test
+>
+> ```npm run test```
