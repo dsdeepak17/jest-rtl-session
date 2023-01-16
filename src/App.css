@@ -163,6 +163,7 @@ button:active {
 .followers-page {
 	height: 86vh;
 	width: 100%;
+	min-width: 60vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
