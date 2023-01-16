@@ -4,7 +4,7 @@ import Follower from '../components/Follower/Follower';
 import { useGetFollowersQuery } from '../redux/followerApi';
 
 function FollowersPage() {
-  const { data: followers, error, isLoading } = useGetFollowersQuery()
+  const { data: followers, error, isLoading } = useGetFollowersQuery(10)
 
 if(error){
   return <>Error has occured</>
