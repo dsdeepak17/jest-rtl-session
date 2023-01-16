@@ -1,16 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Follower from '../components/Follower/Follower';
-import { fetchFollowers } from '../api';
+// import { fetchFollowers } from '../api';
+import { useGetFollowersQuery } from '../redux/followerApi';
 
 function FollowersPage() {
-  const [followers, setFollowers] = useState([])
+  const { data: followers, error, isLoading } = useGetFollowersQuery()
 
-  const isLoading = followers.length === 0;
-
-  useEffect(() => {
-    fetchFollowers().then(users => setFollowers(users))
-  }, [])
-
+if(error){
+  return <>Error has occured</>
+}
 
   return (
     <div className='followers-page' data-testid='followers-page'>
