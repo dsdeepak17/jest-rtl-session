@@ -13,8 +13,6 @@ Object.defineProperty(window, 'matchMedia', {
 });
 
 export function render(ui, {
-  initialState = initialReducerState,
-  store = createStore(reducer, initialState),
   ...renderOptions
 } = {}) {
   function Wrapper({ children }) {
