@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from '../../test-utils'
+import { render, screen, cleanup } from '@testing-library/react'
 import FollowersPage from '../../pages/FollowersPage'
 import { users } from '../../data';
 import { rest } from 'msw'

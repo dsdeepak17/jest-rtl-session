@@ -1,8 +1,5 @@
-import { render, screen, cleanup } from '../../test-utils';
-import { act } from 'react-dom/test-utils';
+import { render, screen, cleanup } from '@testing-library/react';
 import TodoStatus from '../../components/Todo/TodoStatus';
-import { addTodo } from '../../redux/TodoSlice';
-import { store } from '../../redux/store';
 
 const todoList = [
   {
@@ -22,7 +19,7 @@ const todoList = [
   },
 ];
 
-describe('Tests the TodoStatus Component', () => {
+describe('Tests the TodoList Component', () => {
 
   afterEach(() => {
     cleanup();
@@ -30,18 +27,17 @@ describe('Tests the TodoStatus Component', () => {
   });
 
   it('should show number of total tasks.', () => {
-    render(<TodoStatus />)
-
-    act(() => {
-      todoList.forEach(todo => store.dispatch(addTodo(todo)))
-    })
-
+    render(<TodoStatus
+      todoList={todoList}
+    />)
     const todoStatusElement = screen.getByTestId('todo-status');
     expect(todoStatusElement).toHaveTextContent(/total tasks: 3/i)
   });
 
   it('should show number of tasks completed.', () => {
-    render(<TodoStatus />)
+    render(<TodoStatus
+      todoList={todoList}
+    />)
     const todoStatusElement = screen.getByTestId('todo-status');
     expect(todoStatusElement).toHaveTextContent(/completed tasks: 1/i)
   });

@@ -34,7 +34,7 @@ function TodoList() {
             alt="delete-icon"
             onClick={() => handleTodoDeletion(id)} />
         </div>
-      )}
+      )} 
     </div>
   )
 }
