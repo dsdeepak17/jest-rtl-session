@@ -1,7 +1,8 @@
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen, cleanup } from '../../test-utils'
 import userEvent from '@testing-library/user-event'
-
+import { resetTodos } from '../../redux/TodoSlice'
 import Todo from '../../pages/TodoPage'
+import { store } from '../../redux/store'
 
 
 
@@ -20,6 +21,10 @@ describe('Testing TodoPage Components (Integration Test)', () => {
     cleanup();
     jest.resetModules();
   });
+
+  beforeEach(() => {
+    store.dispatch(resetTodos())
+  })
 
   it('should add todo to the list when user inputs in todo-input form', () => {
     render(<Todo />)
