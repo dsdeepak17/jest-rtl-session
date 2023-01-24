@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '../test-utils'
+import { cleanup, render, screen } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
@@ -24,7 +24,7 @@ describe('Test Application', () => {
   })
 
   it('should render the Header and Footer components', () => {
-    render(<App />)
+    render(<App />, { wrapper: BrowserRouter })
     expect(screen.getByTestId('header')).toBeInTheDocument()
     expect(screen.getByTestId('footer')).toBeInTheDocument()
   })
@@ -36,12 +36,12 @@ describe('Test Application', () => {
         return res(ctx.status(500))
       }),
     )
-    const {debug} = render(<App />)
+    const {debug} = render(<App />, { wrapper: BrowserRouter})
 
     userEvent.click(screen.getByText('Followers'))
 
-    const errorMessageItem = await screen.findByText(/Error has occured/i)
+    const errorMessageItem = await screen.findByText(/something went wrong/i)
+
     expect(errorMessageItem).toBeInTheDocument()
-    debug()
   })
 })
