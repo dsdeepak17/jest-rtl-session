@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  todoList: []
+  todoList: [
+    // {
+    //   id: 123,
+    //   text: 'Wash Car',
+    //   isComplete: false,
+    // },
+  ]
 }
 
 export const todoSlice = createSlice({
@@ -22,10 +28,13 @@ export const todoSlice = createSlice({
     deleteTodo: (state, action) => {
       state.todoList = state.todoList.filter(({ id }) => id !== action.payload)
     },
+    resetTodos: (state) => {
+      state.todoList = []
+    }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addTodo, toggleTodoCompletion, deleteTodo } = todoSlice.actions
+export const { addTodo, toggleTodoCompletion, deleteTodo, resetTodos } = todoSlice.actions
 
 export default todoSlice.reducer
