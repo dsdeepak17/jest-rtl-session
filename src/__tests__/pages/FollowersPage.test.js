@@ -20,10 +20,10 @@ describe('Test Followers Page', () => {
   afterAll(() => server.close())
 
 
-  it("should render followers page with 'loading...' text initially", () => {
+  it("should render 3 glimmer lines when loading the page initially", () => {
     render(<FollowersPage />)
 
-    expect(screen.getByTestId('followers-page')).toHaveTextContent('Loading...')
+    expect(screen.getAllByTestId('glimmer-line').length).toBe(3)
   })
 
   it('should render the followers list', async () => {
