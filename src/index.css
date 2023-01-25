@@ -5,3 +5,33 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+.glimmer-line {
+  border-radius: 3px;
+  margin: var(--margin);
+  width: 88%;
+  height: 26px;
+  border-radius: 3px;
+  animation: shimmer 1s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-image: linear-gradient(to right, rgba(15, 15, 15, .3) 0%, rgba(15, 15, 15, 0.1) 20%, rgba(15, 15, 15, 0.15) 40%, rgba(15, 15, 15, 0.2) 60%, rgba(15, 15, 15, 0.25) 80%, rgba(15, 15, 15, 0.3) 100%);
+  }
+  20% {
+    background-image: linear-gradient(to right, rgba(15, 15, 15, 0.3) 0%, rgba(15, 15, 15, .3) 20%, rgba(15, 15, 15, 0.1) 40%, rgba(15, 15, 15, 0.15) 60%, rgba(15, 15, 15, 0.2) 80%, rgba(15, 15, 15, 0.25) 100%);
+  }
+  40% {
+    background-image: linear-gradient(to right, rgba(15, 15, 15, 0.25) 0%, rgba(15, 15, 15, 0.3) 20%, rgba(15, 15, 15, .3) 40%, rgba(15, 15, 15, 0.1) 60%, rgba(15, 15, 15, 0.15) 80%, rgba(15, 15, 15, 0.2) 100%);
+  }
+  60% {
+    background-image: linear-gradient(to right, rgba(15, 15, 15, 0.25) 0%, rgba(15, 15, 15, 0.3) 20%, rgba(15, 15, 15, .3) 40%, rgba(15, 15, 15, 0.1) 60%, rgba(15, 15, 15, 0.15) 80%, rgba(15, 15, 15, 0.2) 100%);
+  }
+  80% {
+    background-image: linear-gradient(to right, rgba(15, 15, 15, 0.2) 0%, rgba(15, 15, 15, 0.25) 20%, rgba(15, 15, 15, 0.3) 40%, rgba(15, 15, 15, .3) 60%, rgba(15, 15, 15, 0.1) 80%, rgba(15, 15, 15, 0.15) 100%);
+  }
+  100% {
+    background-image: linear-gradient(to right, rgba(15, 15, 15, 0.15) 0%, rgba(15, 15, 15, 0.2) 20%, rgba(15, 15, 15, 0.25) 40%, rgba(15, 15, 15, 0.3) 60%, rgba(15, 15, 15, .3) 80%, rgba(15, 15, 15, 0.1) 100%);
+  }
+}
