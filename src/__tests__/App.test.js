@@ -1,5 +1,4 @@
 import { cleanup, render, screen } from '../test-utils'
-import { BrowserRouter } from 'react-router-dom'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
 import App from '../App'
