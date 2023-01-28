@@ -71,7 +71,7 @@ There are generally three levels of testing:
 
 ## Running Tests
 
-> The CRA has scripts that run the tests in **test** folder or with name Component.test.js
+> The CRA has scripts that run the tests in **test** folder or with name ComponentName.test.js
 > To run the test you could run following command in terminal:
 >
 > ```bash
