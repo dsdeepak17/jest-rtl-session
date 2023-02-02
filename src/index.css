@@ -6,6 +6,11 @@
   font-family: 'Poppins', sans-serif;
 }
 
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
 .glimmer-line {
   border-radius: 3px;
   margin: var(--margin);
