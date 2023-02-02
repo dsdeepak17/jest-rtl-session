@@ -81,7 +81,7 @@ button {
 }
 
 button:active {
-  transform: scale(1.035);
+  transform: scale(.91);
 	background: var(--dark-color);
 }
 
@@ -95,10 +95,29 @@ button:active {
   margin: 20px 0px;
 	display: flex;
 	justify-content: center;
+	position: relative;
 }
 
 .todo-input {
-  width: 460px;
+  min-width: 350px;
+}
+
+.todo-input-btn {
+	position: absolute;
+	right: 7px;
+	background: transparent;
+	margin: 0px;
+	padding: 0px;
+}
+
+.todo-input-btn > img {
+	padding: 0;
+	margin: 0;
+	height: 62px;
+	width: 45px;
+}
+.todo-input-btn:hover{
+	background: transparent;
 }
 
 .todo-item {
@@ -213,18 +232,12 @@ button:active {
 	.todo-status {
 		width: 95%;
 	}
-	.todo-input {
-		width:56%;
-	}
 	.follower {
 		width: 24rem;
 	}
 }
 
 @media (max-width: 420px) {
-	.todo-input {
-		width: 57%;
-	}
 	.follower{
 		width: 20rem;
 	}
