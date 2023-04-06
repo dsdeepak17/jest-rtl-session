@@ -297,3 +297,65 @@ export * from '@testing-library/react'
 export {customRender as render}
 ```
 
+## Mocking API Requests
+
+Mock Service Worker is an API mocking library that uses Service Worker API to intercept actual requests.
+
+By bringing the ability of Service Workers to capture requests for the purpose of caching, Mock Service Worker enables API mocking on the highest level of the network communication chain. It is the closest thing to a mocking server without having to create one.
+
+Since Service Worker is a standard API shipped by all modern browsers. Integrating Mock Service Worker into your application, or testing setup, requires no extra configuration, but placing a worker file and declaring mocks.
+
+```javascript
+import React from 'react'
+import {rest} from 'msw'
+import {setupServer} from 'msw/node'
+import {render, fireEvent, waitFor, screen} from '@testing-library/react'
+import '@testing-library/jest-dom'
+import Fetch from '../fetch'
+
+const server = setupServer(
+  rest.get('/greeting', (req, res, ctx) => {
+    return res(ctx.json({greeting: 'hello there'}))
+  }),
+)
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
+
+test('loads and displays greeting', async () => {
+  render(<Fetch url="/greeting" />)
+
+  fireEvent.click(screen.getByText('Load Greeting'))
+
+  await waitFor(() => screen.getByRole('heading'))
+
+  expect(screen.getByRole('heading')).toHaveTextContent('hello there')
+  expect(screen.getByRole('button')).toBeDisabled()
+})
+
+test('handles server error', async () => {
+  server.use(
+    rest.get('/greeting', (req, res, ctx) => {
+      return res(ctx.status(500))
+    }),
+  )
+
+  render(<Fetch url="/greeting" />)
+
+  fireEvent.click(screen.getByText('Load Greeting'))
+
+  await waitFor(() => screen.getByRole('alert'))
+
+  expect(screen.getByRole('alert')).toHaveTextContent('Oops, failed to fetch!')
+  expect(screen.getByRole('button')).not.toBeDisabled()
+})
+```
+
+
+
+## ReadMore
+
+> [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
+> [Mock Service Worker](https://mswjs.io/docs/)
+> [JEST](https://jestjs.io/docs/getting-started)
