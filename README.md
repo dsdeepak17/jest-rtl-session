@@ -75,7 +75,7 @@ There are generally three levels of testing:
 > To run the test you could run following command in terminal:
 >
 > ```bash
->  npm run deploy
+>  npm run test
 > ```
 
 
