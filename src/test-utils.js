@@ -4,14 +4,6 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import { BrowserRouter } from 'react-router-dom';
 
-Object.defineProperty(window, 'matchMedia', {
-  value: () => ({
-    matches: false,
-    addListener: () => { },
-    removeListener: () => { },
-  }),
-});
-
 export function render(ui, {
   ...renderOptions
 } = {}) {
