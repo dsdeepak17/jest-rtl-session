@@ -77,3 +77,134 @@ There are generally three levels of testing:
 > ```bash
 >  npm run deploy
 > ```
+
+
+
+## Some useful functions used in writing/setting tests:
+
+- describe
+- test & it
+- beforeEach
+- afterEach
+- beforeAll
+- afterAll
+
+
+### describe
+Describe is used to create a block that groups together several related tests.
+
+```javascript
+describe("Calculator", () => {
+  it("should add two numbers", () => {});
+  it("should subtract two numbers", () => {});
+});
+```
+
+
+### test and it
+These 2 functions are same. There is no difference in the functionality. Just it is about readability.
+
+Consider the following example:
+
+```javascript
+// Tests written using test keyword
+describe('Module', () => {
+  test('if it does this thing', () => {});
+  test('if it does the other thing', () => {});
+});
+
+// Tests written using it keyword
+describe('Module', () => {
+  it('should do this thing', () => {});
+  it('should do the other thing', () => {});
+});
+```
+
+
+###  beforeEach
+Runs a function before each of the tests in this file runs. If the function returns a promise or a generator, Jest waits for that promise to resolve before running the test.
+
+```javascript
+describe('Calculator', () => {
+    beforeEach(() => {
+        console.log('Before executing it')
+    })
+  it('should add two numbers', () => {
+     console.log('Add')
+  });
+  it('should sub two numbers', () => {
+     console.log('Sub')
+  });
+});
+
+// Output:
+// Before executing it
+// Add
+// Before executing it
+// Sub
+```
+
+### afterEach
+Runs a function after each of the tests in this file runs. If the function returns a promise or a generator, Jest waits for that promise to resolve after running the test.
+
+```javascript
+describe('Calculator', () => {
+    afterEach(() => {
+        console.log('After executing it')
+    })
+  it('should add two numbers', () => {
+     console.log('Add')
+  });
+  it('should sub two numbers', () => {
+     console.log('Sub')
+  });
+});
+// Output:
+// Add
+// After executing it
+// Sub
+// After executing it
+```
+
+### beforeAll
+Runs a function before all of the tests in this file runs. If the function returns a promise or a generator, Jest waits for that promise to resolve before running all the tests.
+
+```javascript
+describe('Calculator', () => {
+    beforeAll(() => {
+        console.log('Before executing it')
+    })
+  it('should add two numbers', () => {
+     console.log('Add')
+  });
+  it('should sub two numbers', () => {
+     console.log('Sub')
+  });
+});
+// Output:
+// Before executing it
+// Add
+// Sub
+```
+
+### afterAll
+Runs a function after all of the tests in this file runs. If the function returns a promise or is a generator, Jest waits for that promise to resolve after running all the tests.
+
+```javascript
+describe('Calculator', () => {
+    afterAll(() => {
+        console.log('After executing it')
+    })
+  it('should add two numbers', () => {
+     console.log('Add')
+  });
+  it('should sub two numbers', () => {
+     console.log('Sub')
+  });
+});
+// Output:
+// Add
+// Sub
+// After executing it
+```
+
