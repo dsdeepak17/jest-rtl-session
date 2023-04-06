@@ -357,7 +357,7 @@ test('handles server error', async () => {
 ## ReadMore
 
 > [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
-
+>
 > [Mock Service Worker](https://mswjs.io/docs/)
-
+>
 > [JEST](https://jestjs.io/docs/getting-started)
