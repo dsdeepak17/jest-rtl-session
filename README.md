@@ -208,3 +208,92 @@ describe('Calculator', () => {
 // After executing it
 ```
 
+
+
+## Writing, planning and skipping tests
+### Skipping test or test suite
+
+Use xdescribe(....) or xit(....) or it.skip(....) or describe.skip(....) to skip specific test or test suite.
+
+```javascript
+describe("Calculator", () => {
+  it("should add two numbers", () => {
+    console.log("Add");
+  });
+  it.skip("should sub two numbers", () => {
+    //Can use other options instead it.skip.
+    console.log("Sub");
+  });
+});
+// Output: Add;
+```
+
+### Runing particular test or test suite
+
+```javascript
+describe("Calculator", () => {
+  fit("should add two numbers", () => {
+    //Can use other options instead fit.
+    console.log("Add");
+  });
+  it.skip("should sub two numbers", () => {
+    console.log("Sub");
+  });
+});
+// Output: Add;
+```
+
+### Planning tests - writing only descriptions and leaving assertions.
+
+```javascript
+const add = (a, b) => a + b;
+
+test.todo("should add two numbers");
+```
+
+## Mocking User Interaction 
+
+We can use user-event (companion library to mock user interactions) or fireEvent (built-in wrapper function of RTL)
+
+### Differences between fireEvent and userEvent
+
+- fireEvent dispatches DOM events, whereas user-event simulates full interactions, which may fire multiple events and do additional checks along the way.
+
+- There are, however, some user interactions or aspects of these that aren't yet implemented and thus can't yet be described with user-event. In these cases you can use fireEvent to dispatch the concrete events that your software relies on.
+
+So, we should try to use user-event library to mock user interactions when possible.
+
+## Custom Render
+
+It's often useful to define a custom render method that includes things like global context providers, data stores, etc. To make this available globally, one approach is to define a utility file that re-exports everything from React Testing Library. You can replace React Testing Library with this file in all your imports. 
+You can replace React Testing Library with this file in all your imports. See below for a way to make your test util file accessible without using relative paths.
+
+```javascript
+// test-utils.jsx
+
+import React from 'react'
+import {render} from '@testing-library/react'
+import {ThemeProvider} from 'my-ui-lib'
+import {TranslationProvider} from 'my-i18n-lib'
+import defaultStrings from 'i18n/en-x-default'
+
+const AllTheProviders = ({children}) => {
+  return (
+    <ThemeProvider theme="light">
+      <TranslationProvider messages={defaultStrings}>
+        {children}
+      </TranslationProvider>
+    </ThemeProvider>
+  )
+}
+
+const customRender = (ui, options) =>
+  render(ui, {wrapper: AllTheProviders, ...options})
+
+// re-export everything
+export * from '@testing-library/react'
+
+// override render method
+export {customRender as render}
+```
+
